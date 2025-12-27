@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingBag, User, Search, Crown } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 import { useCart } from '../../context/CartContext';
@@ -8,6 +8,10 @@ const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const { totalItems } = useCart();
+    const location = useLocation();
+
+    // Pages that have a hero image and need transparent navbar initially
+    const isTransparentNavPage = location.pathname === '/' || location.pathname === '/our-story';
 
     useEffect(() => {
         const handleScroll = () => {
@@ -17,21 +21,24 @@ const Navbar = () => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Force "scrolled" look (solid bg, dark text) if not on a hero page or if actually scrolled
+    const isDarkStyle = scrolled || !isTransparentNavPage;
+
     const navClasses = twMerge(
         'fixed top-0 w-full z-50 transition-all duration-300 border-b border-transparent',
-        scrolled
+        isDarkStyle
             ? 'bg-brand-cream/95 backdrop-blur-md shadow-sm border-brand-gold/10 py-2'
             : 'bg-transparent py-6'
     );
 
     const txtClasses = twMerge(
         'transition-colors duration-300 font-medium tracking-wide text-sm uppercase',
-        scrolled ? 'text-brand-dark' : 'text-brand-cream'
+        isDarkStyle ? 'text-brand-dark' : 'text-brand-cream'
     );
 
     const logoClasses = twMerge(
         'font-serif font-bold tracking-widest transition-all duration-300',
-        scrolled ? 'text-brand-dark text-2xl' : 'text-brand-gold text-3xl'
+        isDarkStyle ? 'text-brand-dark text-2xl' : 'text-brand-gold text-3xl'
     );
 
     const menuItems = [
@@ -83,7 +90,7 @@ const Navbar = () => {
 
                     {/* Mobile Menu Button */}
                     <div className="md:hidden flex items-center">
-                        <button onClick={() => setIsOpen(!isOpen)} className={scrolled ? 'text-brand-dark' : 'text-brand-cream'}>
+                        <button onClick={() => setIsOpen(!isOpen)} className={isDarkStyle ? 'text-brand-dark' : 'text-brand-cream'}>
                             {isOpen ? <X size={28} /> : <Menu size={28} />}
                         </button>
                     </div>

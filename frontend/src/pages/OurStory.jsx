@@ -24,13 +24,13 @@ const OurStory = () => {
                         transition={{ duration: 0.8, ease: "easeOut" }}
                         className="max-w-2xl"
                     >
-                        <span className="text-brand-gold font-bold tracking-[0.2em] text-sm uppercase mb-4 block">Our Heritage</span>
+                        <span className="text-brand-gold font-bold tracking-[0.2em] text-sm uppercase mb-4 block">Established in 1985</span>
                         <h1 className="text-5xl md:text-7xl font-serif text-brand-cream mb-6 leading-tight">
                             Forged in Fire, <br />
                             <span className="text-brand-gold italic">Crafted with Soul.</span>
                         </h1>
                         <p className="text-gray-300 text-lg md:text-xl font-light leading-relaxed max-w-xl">
-                            From the heart of Hathras, the Brass City of India, comes a legacy of devotion cast in metal. We preserve an art form that has adorned temples and homes for centuries.
+                            For over four decades, from the heart of the Brass City, we have been preserving an ancient heritage. A legacy that began in 1985 with a single furnace is now a beacon of devotion worldwide.
                         </p>
                     </motion.div>
                 </div>
@@ -46,13 +46,16 @@ const OurStory = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                         >
-                            <h2 className="text-4xl md:text-5xl font-serif text-brand-dark mb-6">The Legacy of <br /> Hathras</h2>
+                            <h2 className="text-4xl md:text-5xl font-serif text-brand-dark mb-6">Four Decades of <br /> Unwavering Faith</h2>
                             <div className="w-24 h-1 bg-brand-gold mb-8"></div>
                             <p className="text-gray-600 leading-relaxed mb-6 text-lg">
-                                Hathras is not just a city; it is a crucible of art. Known globally as the "Brass City," its narrow lanes echo with the rhythmic tapping of chisels and the roar of furnaces. Here, generations of artisans have passed down the secret alchemy of turning raw metal into divine forms.
+                                It started in 1985 in the narrow, bustling lanes of Hathras. With a vision to bring the divine into every home, our founders set up a modest workshop. They believed that a murti is not just metal; it is a medium of connection between the devotee and the divine.
+                            </p>
+                            <p className="text-gray-600 leading-relaxed mb-6 text-lg">
+                                Hathras, known globally as the "Brass City," provided the perfect soil for this vision to grow. The rhythmic tapping of chisels and the roar of furnaces became the heartbeat of our existence.
                             </p>
                             <p className="text-gray-600 leading-relaxed text-lg">
-                                At Indian Brass Murti, we are the custodians of this heritage. Every idol is not merely a product but a prayer, shaped by hands that revere the deity they create.
+                                Today, nearly 40 years later, while we have embraced modern techniques to ensure precision, the soul of our craft remains ancient. Every piece is still hand-finished, ensuring that when you place an idol in your prayer room, you feel the vibration of decades of devotion.
                             </p>
                         </motion.div>
 
