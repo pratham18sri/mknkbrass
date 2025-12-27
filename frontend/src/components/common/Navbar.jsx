@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, ShoppingBag, User, Search, Crown } from 'lucide-react';
-import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
+import { useCart } from '../../context/CartContext';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const { totalItems } = useCart();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -33,11 +34,18 @@ const Navbar = () => {
         scrolled ? 'text-brand-dark text-2xl' : 'text-brand-gold text-3xl'
     );
 
+    const menuItems = [
+        { name: 'Home', path: '/' },
+        { name: 'Shop Retail', path: '/shop-retail' },
+        { name: 'Wholesale', path: '#' },
+        { name: 'Our Story', path: '#' }
+    ];
+
     return (
         <nav className={navClasses}>
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
-                    {/* Logo - Updated with Professional Icon & Typography */}
+                    {/* Logo */}
                     <div className="flex-shrink-0 flex items-center gap-2">
                         <Crown size={28} className="text-brand-gold" strokeWidth={1.5} />
                         <Link to="/" className={logoClasses}>
@@ -47,11 +55,11 @@ const Navbar = () => {
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex space-x-12 items-center">
-                        {['Home', 'Shop Retail', 'Wholesale', 'Our Story'].map((item) => (
-                            <a key={item} href="#" className={`${txtClasses} hover:text-brand-gold relative group`}>
-                                {item}
+                        {menuItems.map((item) => (
+                            <Link key={item.name} to={item.path} className={`${txtClasses} hover:text-brand-gold relative group`}>
+                                {item.name}
                                 <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-brand-gold transition-all duration-300 group-hover:w-full"></span>
-                            </a>
+                            </Link>
                         ))}
                     </div>
 
@@ -65,7 +73,11 @@ const Navbar = () => {
                         </Link>
                         <button className={txtClasses + " hover:text-brand-gold relative"}>
                             <ShoppingBag size={22} strokeWidth={1.5} />
-                            <span className="absolute -top-2 -right-2 bg-brand-gold text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">2</span>
+                            {totalItems > 0 && (
+                                <span className="absolute -top-2 -right-2 bg-brand-gold text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center animate-bounce">
+                                    {totalItems}
+                                </span>
+                            )}
                         </button>
                     </div>
 
@@ -84,10 +96,10 @@ const Navbar = () => {
                     <button onClick={() => setIsOpen(false)} className="absolute top-8 right-8 text-brand-cream">
                         <X size={32} />
                     </button>
-                    {['Home', 'Shop Retail', 'Wholesale', 'Our Story', 'Contact'].map((item) => (
-                        <a key={item} href="#" className="text-3xl font-serif text-brand-cream hover:text-brand-gold transition-colors">
-                            {item}
-                        </a>
+                    {menuItems.map((item) => (
+                        <Link key={item.name} to={item.path} onClick={() => setIsOpen(false)} className="text-3xl font-serif text-brand-cream hover:text-brand-gold transition-colors">
+                            {item.name}
+                        </Link>
                     ))}
                 </div>
             </div>
