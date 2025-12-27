@@ -71,14 +71,14 @@ const Navbar = () => {
                         <Link to="/login" className={txtClasses + " hover:text-brand-gold"}>
                             <User size={22} strokeWidth={1.5} />
                         </Link>
-                        <button className={txtClasses + " hover:text-brand-gold relative"}>
+                        <Link to="/cart" className={txtClasses + " hover:text-brand-gold relative"}>
                             <ShoppingBag size={22} strokeWidth={1.5} />
                             {totalItems > 0 && (
                                 <span className="absolute -top-2 -right-2 bg-brand-gold text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center animate-bounce">
                                     {totalItems}
                                 </span>
                             )}
-                        </button>
+                        </Link>
                     </div>
 
                     {/* Mobile Menu Button */}

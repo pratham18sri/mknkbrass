@@ -11,12 +11,12 @@ import shiva from '../assets/shiva.png';
 
 // Mock Data
 const products = [
-    { id: 1, name: 'Ganesh Idol - Antique Finish', price: 12500, category: 'Ganesh', img: ganesh, description: "Handcrafted brass Ganesh idol with antique finish." },
-    { id: 2, name: 'Sitting Ganesh', price: 8500, category: 'Ganesh', img: ganesh, description: "Detailed sitting Ganesh for home altar." },
-    { id: 3, name: 'Krishna Playing Flute', price: 15999, category: 'Krishna', img: krishna, description: "Exquisite brass Krishna playing the flute." },
-    { id: 4, name: 'Radha Krishna Set', price: 24500, category: 'Krishna', img: krishna, description: "Pair of Radha and Krishna deities." },
-    { id: 5, name: 'Lakshmi Standing', price: 11000, category: 'Lakshmi', img: lakshmi, description: "Symbol of wealth and prosperity." },
-    { id: 6, name: 'Shiva Nataraja', price: 18500, category: 'Shiva', img: shiva, description: "Cosmic dancer Shiva in brass." },
+    { id: 1, name: 'Ganesh Idol - Antique Finish', price: 12500, weight: '4.5 kg', category: 'Ganesh', img: ganesh, description: "Handcrafted brass Ganesh idol with antique finish." },
+    { id: 2, name: 'Sitting Ganesh', price: 8500, weight: '2.2 kg', category: 'Ganesh', img: ganesh, description: "Detailed sitting Ganesh for home altar." },
+    { id: 3, name: 'Krishna Playing Flute', price: 15999, weight: '5.8 kg', category: 'Krishna', img: krishna, description: "Exquisite brass Krishna playing the flute." },
+    { id: 4, name: 'Radha Krishna Set', price: 24500, weight: '8.5 kg', category: 'Krishna', img: krishna, description: "Pair of Radha and Krishna deities." },
+    { id: 5, name: 'Lakshmi Standing', price: 11000, weight: '3.9 kg', category: 'Lakshmi', img: lakshmi, description: "Symbol of wealth and prosperity." },
+    { id: 6, name: 'Shiva Nataraja', price: 18500, weight: '6.2 kg', category: 'Shiva', img: shiva, description: "Cosmic dancer Shiva in brass." },
 ];
 
 const categories = ['All', 'Ganesh', 'Krishna', 'Lakshmi', 'Shiva'];
@@ -30,8 +30,8 @@ const Retailer = () => {
         : products.filter(p => p.category === selectedCategory);
 
     const handleWhatsApp = (product) => {
-        const message = `Hi, I am interested in buying *${product.name}* priced at ₹${product.price}. Can you please share more details?`;
-        window.open(`https://wa.me/919876543210?text=${encodeURIComponent(message)}`, '_blank');
+        const message = `Hi, I am interested in buying *${product.name}* (Weight: ${product.weight}) priced at ₹${product.price.toLocaleString('en-IN')}. Can you please share more details?`;
+        window.open(`https://wa.me/917017789326?text=${encodeURIComponent(message)}`, '_blank');
     };
 
     return (
@@ -54,8 +54,8 @@ const Retailer = () => {
                             key={cat}
                             onClick={() => setSelectedCategory(cat)}
                             className={`px-6 py-2 rounded-full text-sm font-medium tracking-wide transition-all ${selectedCategory === cat
-                                    ? 'bg-brand-dark text-brand-gold shadow-lg'
-                                    : 'bg-white text-gray-600 hover:bg-brand-gold/10'
+                                ? 'bg-brand-dark text-brand-gold shadow-lg'
+                                : 'bg-white text-gray-600 hover:bg-brand-gold/10'
                                 }`}
                         >
                             {cat}
@@ -80,8 +80,9 @@ const Retailer = () => {
                                     alt={product.name}
                                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                                 />
-                                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-dark shadow-sm">
-                                    ₹{product.price.toLocaleString('en-IN')}
+                                <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-brand-dark shadow-sm flex flex-col items-end">
+                                    <span>₹{product.price.toLocaleString('en-IN')}</span>
+                                    <span className="text-[10px] font-normal text-gray-500">{product.weight}</span>
                                 </div>
                             </div>
 

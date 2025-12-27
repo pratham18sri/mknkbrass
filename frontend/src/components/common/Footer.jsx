@@ -42,7 +42,7 @@ const Footer = () => {
                     <div>
                         <h4 className="text-white font-serif text-lg mb-6">Contact Us</h4>
                         <p className="text-gray-400 text-sm mb-2">Hathras, India (Brass City)</p>
-                        <p className="text-gray-400 text-sm mb-2">+91 98765 43210</p>
+                        <p className="text-gray-400 text-sm mb-2">+91 70177 89326</p>
                         <p className="text-gray-400 text-sm">support@indianbrassmurti.com</p>
                     </div>
                 </div>
