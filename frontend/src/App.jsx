@@ -7,6 +7,7 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Retailer from './pages/Retailer';
 import Cart from './pages/Cart';
+import OurStory from './pages/OurStory';
 import { ToastProvider } from './context/ToastContext';
 import { CartProvider } from './context/CartContext';
 
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/" element={<Homepage />} />
                 <Route path="/shop-retail" element={<Retailer />} />
                 <Route path="/cart" element={<Cart />} />
+                <Route path="/our-story" element={<OurStory />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/login" element={<Login />} />
               </Routes>
